@@ -1,18 +1,22 @@
 import { Button, TextField } from "@mui/material";
 import { system } from "./app/system";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState("");
   return (
     <>
-      <TextField id="name-input" label="Name" variant="standard" />
+      <TextField
+        id="name-input"
+        label="Name"
+        variant="standard"
+        onChange={(element) => setName(element.target.value)}
+      />
       <Button
         variant="outlined"
         onClick={() => {
-          const name = document.getElementById(
-            "name-input"
-          ) as HTMLInputElement;
-          system.newTask({ name: name.value, completed: false });
+          system.newTask({ name: name, completed: false });
           system.list.forEach((element) => console.log(element));
         }}
       >
