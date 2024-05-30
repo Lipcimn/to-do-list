@@ -36,6 +36,19 @@ function App() {
     }
   };
   /**
+   * Handles the key down event of the input element when the Enter key is pressed.
+   *
+   * @param {React.KeyboardEvent<HTMLInputElement>} event - The keyboard event triggered by the input element.
+   * @return {void} This function does not return anything.
+   */
+  const handleInputKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ): void => {
+    if (event.key === "Enter") {
+      handleButtonClick();
+    }
+  };
+  /**
    * Updates the completion status of a task in the tasks array based on the checkbox event.
    * @param {React.ChangeEvent<HTMLInputElement>} event - The event triggered by the checkbox change.
    * @param {number} index - The index of the task in the tasks array.
@@ -60,6 +73,7 @@ function App() {
           variant="standard"
           value={name}
           onChange={handleInputValue}
+          onKeyDown={handleInputKeyDown}
         />
         <Button variant="outlined" onClick={handleButtonClick}>
           Create
